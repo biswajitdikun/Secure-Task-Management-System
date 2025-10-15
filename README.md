@@ -6,6 +6,10 @@ A full-stack task management application with role-based access control, built u
 
 This system implements a secure task management platform where users with different roles can securely manage tasks within an organization. The application demonstrates RBAC implementation, JWT-based authentication, and organization-level data isolation.
 
+## Demo Video
+
+Watch the project demonstration: [YouTube Video](https://www.youtube.com/watch?v=J_owqtZi_Gc)
+
 ## Project Structure
 
 ```
