@@ -1,0 +1,30 @@
+{
+  "name": "task-management-system",
+  "version": "1.0.0",
+  "description": "A full-stack task management system with role-based access control, built for TurboVets coding challenge",
+  "main": "index.js",
+  "scripts": {
+    "dev:api": "cd apps/api && npm run dev",
+    "dev:dashboard": "cd apps/dashboard && npm run dev",
+    "build:api": "cd apps/api && npm run build",
+    "build:dashboard": "cd apps/dashboard && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "task-management",
+    "rbac",
+    "nestjs",
+    "angular",
+    "nx"
+  ],
+  "author": "Biswajit Satapathy",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "libs/*"
+  ],
+  "dependencies": {
+    "webpack": "^5.102.1"
+  }
+}

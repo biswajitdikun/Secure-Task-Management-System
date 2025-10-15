@@ -1,0 +1,8 @@
+// User management specific styles
+.role-badge {
+  @apply inline-flex px-2 py-1 text-xs font-semibold rounded-full;
+}
+
+.status-badge {
+  @apply inline-flex px-2 py-1 text-xs font-semibold rounded-full;
+}
