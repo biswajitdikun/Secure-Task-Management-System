@@ -56,15 +56,6 @@ export class AuthService {
       organizationId: user.organizationId,
     };
 
-    // TODO: Add audit logging for login events
-    // await this.auditLogService.log(
-    //   user.id,
-    //   'LOGIN',
-    //   'USER',
-    //   user.id,
-    //   user.organizationId,
-    //   `User logged in: ${user.email}`,
-    // );
 
     return {
       access_token: this.jwtService.sign(payload),
@@ -129,21 +120,6 @@ export class AuthService {
     };
 
     const savedUser = await this.userRepository.save(userData);
-
-    // TODO: Add audit logging for registration events
-    // try {
-    //   await this.auditLogService.log(
-    //     savedUser.id,
-    //     'REGISTER',
-    //     'USER',
-    //     savedUser.id,
-    //     savedUser.organizationId,
-    //     `User registered: ${savedUser.email}`,
-    //   );
-    // } catch (error) {
-    //   console.error('Failed to log audit:', error);
-    //   // Don't fail registration if audit logging fails
-    // }
 
     // Generate JWT token for the new user
     const payload = {
