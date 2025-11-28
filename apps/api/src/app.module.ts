@@ -17,31 +17,35 @@ import { AuditLog } from './entities/audit-log.entity';
 
 @Module({
   imports: [
-    // Load environment variables from .env file
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-    // Database connection - using SQLite for development
+    // Database connection - SQLite
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
         type: 'sqlite',
         database: configService.get('DB_DATABASE', 'database.sqlite'),
         entities: [User, Organization, Task, AuditLog],
-        synchronize: configService.get('NODE_ENV') !== 'production', // Auto-create tables in dev
-        logging: configService.get('NODE_ENV') === 'development', // Show SQL queries in dev
+        synchronize: configService.get('NODE_ENV') !== 'production',
+        logging: false,
+        //logging: configService.get('NODE_ENV') === 'development',
       }),
       inject: [ConfigService],
     }),
-    // JWT configuration - make it globally available
-    JwtModule.register({
-      secret: 'your-super-secret-jwt-key-change-this-in-production',
-      signOptions: { expiresIn: '24h' },
-      global: true,
+    JwtModule.registerAsync({
+      imports: [ConfigModule],
+      useFactory: (configService: ConfigService) => ({
+        secret: configService.get<string>('JWT_SECRET'),
+        signOptions: {
+          expiresIn: configService.get<string>('JWT_EXPIRES_IN', '24h'),
+        },
+        global: true,
+      }),
+      inject: [ConfigService],
     }),
-    // Passport for authentication strategies
+    // Passport module for authentication strategies
     PassportModule.register({ defaultStrategy: 'jwt' }),
-    // Feature modules
     AuthModule,
     UsersModule,
     TasksModule,

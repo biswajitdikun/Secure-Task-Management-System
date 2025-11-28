@@ -47,6 +47,6 @@ export class AuditLogService {
     });
 
     await this.auditLogRepository.save(auditLog);
-    console.log(`[AUDIT] User ${userId} performed ${action} on ${resource}${resourceId ? ` (ID: ${resourceId})` : ''} in organization ${organizationId}`);
+    // console.log(`[AUDIT] User ${userId} performed ${action} on ${resource}${resourceId ? ` (ID: ${resourceId})` : ''} in organization ${organizationId}`);
   }
 }

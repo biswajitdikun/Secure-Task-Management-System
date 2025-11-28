@@ -10,6 +10,7 @@ import * as bcrypt from 'bcryptjs';
 
 import { User } from '../entities/user.entity';
 import { LoginDto, RegisterDto, AuthResponseDto } from '../dto/auth.dto';
+import { Role } from '../dto/user.dto';
 import { Organization } from '../entities/organization.entity';
 
 @Injectable()
@@ -115,7 +116,7 @@ export class AuthService {
       ...registerDto,
       password: hashedPassword,
       organizationId: organizationId,
-      role: totalUserCount === 0 ? 'owner' as any : 'viewer' as any, // First user = owner, rest = viewers
+      role: totalUserCount === 0 ? Role.OWNER : Role.VIEWER, // First user = owner, rest = viewers
       isActive: true,
     };
 
