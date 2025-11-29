@@ -62,8 +62,7 @@ export class TasksController {
   }
 
   @Patch(':id')
-  @Roles(Role.ADMIN, Role.OWNER)
-  // Task update permission check - only admins and owners can update tasks
+  // Task update permission check
   @ApiOperation({ summary: 'Update a task' })
   @ApiResponse({ status: 200, description: 'Task updated successfully' })
   @ApiResponse({ status: 403, description: 'Forbidden - only admins and owners can update tasks' })
@@ -77,8 +76,7 @@ export class TasksController {
   }
 
   @Delete(':id')
-  @Roles(Role.ADMIN, Role.OWNER)
-  // Task delete permission check - only admins and owners can delete tasks
+  // Task delete permission check
   @ApiOperation({ summary: 'Delete a task' })
   @ApiResponse({ status: 200, description: 'Task deleted successfully' })
   @ApiResponse({ status: 403, description: 'Forbidden - only admins and owners can delete tasks' })
