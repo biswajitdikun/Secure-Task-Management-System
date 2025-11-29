@@ -5,7 +5,8 @@ import { Router } from '@angular/router';
 
 import { TaskService } from '../../core/services/task.service';
 import { AuthService } from '../../core/services/auth.service';
-import { AuditLogService, AuditLog } from '../../core/services/audit-log.service';
+import { AuditLogService } from '../../core/services/audit-log.service';
+import { AuditLog } from '../../core/models/audit-log.model';
 import { Task, TaskStatus, TaskPriority, CreateTaskDto, UpdateTaskDto } from '../../core/models/task.model';
 
 @Component({
