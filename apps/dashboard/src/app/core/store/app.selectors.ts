@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { AppState } from '../app.state';
+import { AppState } from './app.state';
 
 // Feature selectors
 export const selectAuthState = createFeatureSelector<AppState['auth']>('auth');
@@ -89,12 +89,3 @@ export const selectCurrentUserRole = createSelector(
   (user) => user?.role
 );
 
-export const selectCanCreateUsers = createSelector(
-  selectCurrentUserRole,
-  (role) => role === 'owner' || role === 'admin'
-);
-
-export const selectCanDeleteUsers = createSelector(
-  selectCurrentUserRole,
-  (role) => role === 'owner'
-);
